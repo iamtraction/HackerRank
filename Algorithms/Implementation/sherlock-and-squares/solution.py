@@ -5,18 +5,7 @@ import os
 
 # Complete the squares function below.
 def squares(a, b):
-    count = 0
-
-    i = a
-    while i <= b:
-        sqrt = math.sqrt(i)
-        if sqrt.is_integer():
-            count += 1
-            i = int((sqrt + 1) * (sqrt + 1))
-        else:
-            i += 1
-
-    return count
+    return math.floor(math.sqrt(b)) - math.ceil(math.sqrt(a)) + 1
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
