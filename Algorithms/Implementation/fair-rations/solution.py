@@ -8,7 +8,7 @@ def fairRations(B):
     carries = 0
 
     for b in B:
-        carry = (carry + b) % 2
+        carry = (carry + b) & 1
         carries += carry
 
     return "NO" if carry else carries * 2
