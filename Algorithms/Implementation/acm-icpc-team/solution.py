@@ -5,13 +5,11 @@ from itertools import combinations
 
 # Complete the acmTeam function below.
 def acmTeam(attendees):
-    teams = combinations(attendees, 2)
-    team_topics = ['{1:0{0}b}'.format(len(team[0]), int(team[0], 2) | int(team[1], 2)) for team in teams]
-    team_topics_count = [i.count("1") for i in team_topics]
+    topics = ['{1:0{0}b}'.format(len(team[0]), int(team[0], 2) | int(team[1], 2)).count("1") for team in combinations(attendees, 2)]
 
-    max_team_topics = max(team_topics_count)
+    max_topics = max(topics)
     
-    return (max_team_topics, team_topics_count.count(max_team_topics))
+    return (max_topics, topics.count(max_topics))
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
