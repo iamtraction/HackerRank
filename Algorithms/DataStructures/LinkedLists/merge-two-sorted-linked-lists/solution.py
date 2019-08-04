@@ -46,15 +46,34 @@ def mergeLists(head1, head2):
     if head1 is None or head2 is None:
         head = head1 or head2
         return head
-
+    
+    # new head
+    head = None
     if head1.data < head2.data:
-        head1.next = mergeLists(head1.next, head2)
-        return head1
+        head = head1
+        head1 = head1.next
     else:
-        head2.next = mergeLists(head1, head2.next)
-        return head2
+        head = head2
+        head2 = head2.next
+    
+    # rest of the list
+    tail_list = head
+    while head1 != None and head2 != None:
+        if head1.data < head2.data:
+            tail_list.next = head1
+            head1 = head1.next
+        else:
+            tail_list.next = head2
+            head2 = head2.next
+        tail_list = tail_list.next
+    
+    # add remaining elements
+    if head1 is None:
+        tail_list.next = head2
+    else:
+        tail_list.next = head1
 
-
+    return head
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
