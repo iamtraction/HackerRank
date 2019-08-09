@@ -46,8 +46,10 @@ def preOrder(root):
         return None
 
     print(root.info, end=" ")
-    preOrder(root.left)
-    preOrder(root.right)
+    if root.left:
+        preOrder(root.left)
+    if root.right:
+        preOrder(root.right)
 
 
 
